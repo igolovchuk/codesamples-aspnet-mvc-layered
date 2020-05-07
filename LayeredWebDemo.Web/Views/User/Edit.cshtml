@@ -1,0 +1,80 @@
+﻿@model LayeredWebDemo.BLL.DTO.UserDTO
+@{
+    ViewBag.Title = "Edit";
+}
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()<br />
+    @Html.ValidationSummary(true)
+    <div class="message-error">@ViewBag.Error</div>
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.UserName)
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "first name" })
+                @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "help-block red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "last name" })
+                @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "help-block red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.EnumDropDownListFor(m => m.Gender, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", required = "true", type = "date" })
+                @Html.ValidationMessageFor(model => model.DateOfBirth, null, new { @class = "help-block red" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", autocomplete = "off", @placeholder = "email address" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "help-block red" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "phone number" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "help-block red" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "address" })
+                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "help-block red" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AboutMe, new { @class = "col-sm-4 control-label" })
+            <div class="col-sm-8">
+                @Html.TextAreaFor(m => m.AboutMe, new { @class = "form-control", cols = "58", rows = "7", @placeholder = "describe yourself" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />      
+            </div>
+        </div>
+        </div>
+
+        }
+
